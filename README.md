@@ -12,3 +12,8 @@ Alterações:
 - Painel decorativo KM 55 removido da seção Localização.
 - Localização centralizada em bloco único.
 - WhatsApp convertido em botão circular pulsante com ícone correto.
+
+- Seção institucional com nova paleta areia/bronze de maior contraste.
+- Frase institucional destacada em bloco premium.
+- Espaçamento vertical entre seções reduzido.
+- Headings e textos claros receberam contraste reforçado.
