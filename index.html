@@ -3,117 +3,177 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0a0b0a" />
-  <meta name="description" content="Hotel Zenf em Papanduva, SC. Conforto, praticidade, café da manhã, Wi-Fi e estacionamento. Consulte quartos e fale pelo WhatsApp." />
+  <meta name="theme-color" content="#0b0b09" />
+  <meta name="description" content="Hotel Zenf em Papanduva, SC. Conforto, praticidade, café da manhã, Wi-Fi e estacionamento na BR-116." />
   <meta property="og:title" content="Hotel Zenf | Papanduva - SC" />
-  <meta property="og:description" content="O atendimento, o conforto e a economia que você merece." />
-  <meta property="og:image" content="assets/hotel-zenf-brand.jpg" />
+  <meta property="og:description" content="Conforto, atendimento e praticidade na BR-116." />
+  <meta property="og:image" content="assets/hero-hotel-zenf.jpg" />
   <title>Hotel Zenf | Papanduva - SC</title>
   <link rel="icon" href="assets/favicon.ico" />
   <link rel="apple-touch-icon" href="assets/icon-180.png" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="noise"></div>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
   <header class="nav" id="topo">
     <a class="brand-mini" href="#topo" aria-label="Hotel Zenf - Início">
       <img src="assets/hotel-zenf-emblem.png" alt="Símbolo Hotel Zenf" />
-      <span>Hotel Zenf</span>
+      <div><strong>Hotel Zenf</strong><small>Papanduva • SC</small></div>
     </a>
+
     <nav aria-label="Navegação principal">
       <a href="#hotel">O Hotel</a>
       <a href="#quartos">Quartos</a>
       <a href="#estrutura">Estrutura</a>
       <a href="#localizacao">Localização</a>
     </nav>
-    <a class="nav-cta" href="https://wa.me/554736532288?text=Olá%2C%20vim%20pelo%20site%20do%20Hotel%20Zenf%20e%20gostaria%20de%20consultar%20disponibilidade." target="_blank" rel="noopener">Reservar pelo WhatsApp</a>
+
+    <a class="nav-cta" href="https://wa.me/554736532288?text=Olá%2C%20vim%20pelo%20site%20do%20Hotel%20Zenf%20e%20gostaria%20de%20consultar%20disponibilidade." target="_blank" rel="noopener">
+      Reservar pelo WhatsApp
+    </a>
     <button class="menu" aria-label="Abrir menu" aria-expanded="false">☰</button>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="hero-media">
-        <img src="assets/hotel-zenf-brand.jpg" alt="Hotel Zenf" />
+    <section class="hero" id="inicio">
+      <div class="hero-stage">
+        <div class="hero-media depth-layer" data-depth="0.12">
+          <img src="assets/hero-hotel-zenf.jpg" alt="Acomodação do Hotel Zenf" />
+        </div>
+        <div class="hero-glow depth-layer" data-depth="0.04"></div>
+        <div class="hero-vignette"></div>
       </div>
-      <div class="hero-shade"></div>
+
       <div class="hero-content reveal">
-        <span class="eyebrow">PAPANDUVA • SANTA CATARINA</span>
-        <h1>Uma pausa confortável<br><em>no seu caminho.</em></h1>
-        <p>Hospedagem prática, acolhedora e bem localizada na BR-116, com café da manhã, Wi-Fi e estacionamento.</p>
+        <span class="eyebrow">HOTEL ZENF • PAPANDUVA, SC</span>
+        <h1>Conforto para<br><em>seguir viagem.</em></h1>
+        <p>Uma hospedagem direta, acolhedora e bem localizada na BR-116, com quartos confortáveis, café da manhã, Wi-Fi e estacionamento.</p>
         <div class="hero-actions">
           <a class="btn primary" href="#quartos">Conhecer quartos</a>
-          <a class="btn ghost" href="https://wa.me/554736532288?text=Olá%2C%20gostaria%20de%20consultar%20um%20quarto%20no%20Hotel%20Zenf." target="_blank" rel="noopener">Falar agora</a>
+          <a class="btn ghost" href="https://wa.me/554736532288?text=Olá%2C%20gostaria%20de%20consultar%20um%20quarto%20no%20Hotel%20Zenf." target="_blank" rel="noopener">Falar com o hotel</a>
         </div>
       </div>
-      <div class="hero-stats reveal">
-        <div><strong>4,4</strong><span>avaliação no Google</span></div>
-        <div><strong>BR-116</strong><span>Km 55 • Papanduva</span></div>
-        <div><strong>24h</strong><span>recepção</span></div>
+
+      <div class="hero-floating-card reveal depth-layer" data-depth="-0.06">
+        <img src="assets/hotel-zenf-emblem.png" alt="" />
+        <div><small>BR-116 • KM 55</small><strong>Um ponto de descanso no seu caminho.</strong></div>
       </div>
-      <a class="scroll-hint" href="#hotel">Role para descobrir <span>↓</span></a>
+
+      <div class="hero-stats reveal">
+        <div><strong>4,4</strong><span>Avaliação no Google</span></div>
+        <div><strong>24h</strong><span>Recepção</span></div>
+        <div><strong>BR-116</strong><span>Km 55 • Papanduva</span></div>
+      </div>
+
+      <a class="scroll-hint" href="#hotel" aria-label="Role para descobrir"><span></span></a>
     </section>
 
     <section class="intro section" id="hotel">
-      <div class="section-kicker reveal">HOTEL ZENF</div>
+      <div class="intro-orbit" aria-hidden="true"></div>
+      <div class="section-kicker reveal">O HOTEL</div>
       <div class="intro-grid">
-        <h2 class="reveal">Conforto sem complicação.<br><em>Do jeito que uma boa hospedagem deve ser.</em></h2>
+        <h2 class="reveal">Uma parada tranquila.<br><em>Sem complicação.</em></h2>
         <div class="intro-copy reveal">
-          <p>Na estrada a trabalho, em viagem ou apenas precisando de um lugar tranquilo para descansar, o Hotel Zenf reúne o essencial com atendimento direto e localização estratégica.</p>
+          <p>Para quem está na estrada a trabalho, em viagem ou apenas precisa descansar bem, o Hotel Zenf reúne o essencial com atendimento direto e localização estratégica.</p>
+          <div class="signature-line"></div>
           <p class="quote">“O atendimento, o conforto e a economia que você merece.”</p>
         </div>
       </div>
     </section>
 
     <section class="rooms section" id="quartos">
+      <div class="rooms-backdrop" aria-hidden="true"></div>
       <div class="section-head reveal">
         <div>
           <span class="section-kicker">ACOMODAÇÕES</span>
           <h2>Escolha seu quarto.</h2>
         </div>
-        <p>Valores do catálogo informado pelo hotel. Consulte disponibilidade e confirmação diretamente pelo WhatsApp.</p>
+        <p>Conheça as principais categorias. Valores informados pelo hotel; disponibilidade e condições são confirmadas diretamente pelo WhatsApp.</p>
       </div>
+
       <div class="room-grid">
-        <article class="room-card reveal">
-          <img src="assets/standard-triplo.jpg" alt="Quarto Standard Triplo" />
-          <div class="room-info"><span>Até 3 hóspedes</span><h3>Standard Triplo</h3><p>Três camas de solteiro, ar-condicionado e conforto para grupos ou equipes.</p><div class="price"><small>a partir de</small><strong>R$ 420</strong></div><a href="https://wa.me/554736532288?text=Olá%2C%20gostaria%20de%20consultar%20o%20quarto%20Standard%20Triplo." target="_blank" rel="noopener">Consultar disponibilidade →</a></div>
+        <article class="room-card reveal tilt-card">
+          <div class="room-image"><img src="assets/standard-triplo.jpg" alt="Quarto Standard Triplo"></div>
+          <div class="room-info">
+            <span>ATÉ 3 HÓSPEDES</span><h3>Standard Triplo</h3>
+            <p>Três camas de solteiro, ar-condicionado e configuração prática para grupos ou equipes.</p>
+            <div class="room-bottom"><div class="price"><small>a partir de</small><strong>R$ 420</strong></div><a href="https://wa.me/554736532288?text=Olá%2C%20gostaria%20de%20consultar%20o%20quarto%20Standard%20Triplo." target="_blank" rel="noopener">Consultar →</a></div>
+          </div>
         </article>
-        <article class="room-card reveal">
-          <img src="assets/standard-individual.jpg" alt="Quarto Standard Individual" />
-          <div class="room-info"><span>Individual</span><h3>Standard Individual</h3><p>Opção prática para quem viaja sozinho, com Wi-Fi e itens essenciais para uma boa noite.</p><div class="price"><small>a partir de</small><strong>R$ 140</strong></div><a href="https://wa.me/554736532288?text=Olá%2C%20gostaria%20de%20consultar%20o%20quarto%20Standard%20Individual." target="_blank" rel="noopener">Consultar disponibilidade →</a></div>
+
+        <article class="room-card reveal tilt-card">
+          <div class="room-image"><img src="assets/standard-individual.jpg" alt="Quarto Standard Individual"></div>
+          <div class="room-info">
+            <span>INDIVIDUAL</span><h3>Standard Individual</h3>
+            <p>Opção prática para quem viaja sozinho, com os itens essenciais para descansar bem.</p>
+            <div class="room-bottom"><div class="price"><small>a partir de</small><strong>R$ 140</strong></div><a href="https://wa.me/554736532288?text=Olá%2C%20gostaria%20de%20consultar%20o%20quarto%20Standard%20Individual." target="_blank" rel="noopener">Consultar →</a></div>
+          </div>
         </article>
-        <article class="room-card reveal featured">
-          <img src="assets/luxo-duplo.jpg" alt="Quarto Luxo Duplo" />
-          <div class="room-info"><span>Mais espaço</span><h3>Luxo Duplo</h3><p>Cama King size e ambiente amplo para quem busca uma experiência mais confortável.</p><div class="price"><small>a partir de</small><strong>R$ 320</strong></div><a href="https://wa.me/554736532288?text=Olá%2C%20gostaria%20de%20consultar%20o%20quarto%20Luxo%20Duplo." target="_blank" rel="noopener">Consultar disponibilidade →</a></div>
+
+        <article class="room-card room-card-wide reveal tilt-card">
+          <div class="room-image"><img src="assets/luxo-duplo.jpg" alt="Quarto Luxo Duplo"></div>
+          <div class="room-info">
+            <span>MAIS ESPAÇO</span><h3>Luxo Duplo</h3>
+            <p>Cama King size e ambiente amplo para quem busca mais conforto durante a estadia.</p>
+            <div class="room-bottom"><div class="price"><small>a partir de</small><strong>R$ 320</strong></div><a href="https://wa.me/554736532288?text=Olá%2C%20gostaria%20de%20consultar%20o%20quarto%20Luxo%20Duplo." target="_blank" rel="noopener">Consultar →</a></div>
+          </div>
         </article>
-        <article class="room-card reveal">
-          <img src="assets/standard-duplo.jpg" alt="Quarto Standard Duplo" />
-          <div class="room-info"><span>Duplo</span><h3>Standard Duplo</h3><p>Duas camas, ar-condicionado e configuração ideal para duas pessoas.</p><div class="price"><small>a partir de</small><strong>R$ 320</strong></div><a href="https://wa.me/554736532288?text=Olá%2C%20gostaria%20de%20consultar%20o%20quarto%20Standard%20Duplo." target="_blank" rel="noopener">Consultar disponibilidade →</a></div>
+
+        <article class="room-card reveal tilt-card">
+          <div class="room-image"><img src="assets/standard-duplo.jpg" alt="Quarto Standard Duplo"></div>
+          <div class="room-info">
+            <span>DUPLO</span><h3>Standard Duplo</h3>
+            <p>Duas camas, ar-condicionado e configuração confortável para duas pessoas.</p>
+            <div class="room-bottom"><div class="price"><small>a partir de</small><strong>R$ 320</strong></div><a href="https://wa.me/554736532288?text=Olá%2C%20gostaria%20de%20consultar%20o%20quarto%20Standard%20Duplo." target="_blank" rel="noopener">Consultar →</a></div>
+          </div>
         </article>
-        <article class="room-card reveal">
-          <img src="assets/luxo-individual.jpg" alt="Quarto Luxo Individual" />
-          <div class="room-info"><span>Individual premium</span><h3>Luxo Individual</h3><p>Cama ampla e ambiente confortável para uma estadia individual com mais comodidade.</p><div class="price"><small>a partir de</small><strong>R$ 220</strong></div><a href="https://wa.me/554736532288?text=Olá%2C%20gostaria%20de%20consultar%20o%20quarto%20Luxo%20Individual." target="_blank" rel="noopener">Consultar disponibilidade →</a></div>
+
+        <article class="room-card reveal tilt-card">
+          <div class="room-image"><img src="assets/luxo-individual.jpg" alt="Quarto Luxo Individual"></div>
+          <div class="room-info">
+            <span>INDIVIDUAL PREMIUM</span><h3>Luxo Individual</h3>
+            <p>Cama ampla e ambiente confortável para uma estadia individual com mais comodidade.</p>
+            <div class="room-bottom"><div class="price"><small>a partir de</small><strong>R$ 220</strong></div><a href="https://wa.me/554736532288?text=Olá%2C%20gostaria%20de%20consultar%20o%20quarto%20Luxo%20Individual." target="_blank" rel="noopener">Consultar →</a></div>
+          </div>
         </article>
       </div>
     </section>
 
     <section class="experience section" id="estrutura">
-      <div class="experience-title reveal"><span class="section-kicker">ESSENCIAL, BEM FEITO</span><h2>Tudo o que importa<br>para descansar bem.</h2></div>
+      <div class="experience-title reveal">
+        <span class="section-kicker">O ESSENCIAL, BEM FEITO</span>
+        <h2>O que você precisa<br>para descansar bem.</h2>
+      </div>
+
       <div class="amenities">
-        <div class="amenity reveal"><span>01</span><h3>Café da manhã</h3><p>Comece o dia com praticidade antes de seguir viagem.</p></div>
-        <div class="amenity reveal"><span>02</span><h3>Wi-Fi</h3><p>Conectividade para trabalho, comunicação e entretenimento.</p></div>
-        <div class="amenity reveal"><span>03</span><h3>Estacionamento</h3><p>Mais tranquilidade para quem chega de carro.</p></div>
-        <div class="amenity reveal"><span>04</span><h3>Ar-condicionado</h3><p>Acomodações preparadas para o clima em qualquer estação.</p></div>
-        <div class="amenity reveal"><span>05</span><h3>TV e frigobar</h3><p>Comodidade no quarto para uma estadia mais confortável.</p></div>
-        <div class="amenity reveal"><span>06</span><h3>Recepção 24h</h3><p>Atendimento para quem chega em diferentes horários.</p></div>
+        <article class="amenity reveal">
+          <div class="amenity-icon">☕</div><h3>Café da manhã</h3><p>Comece o dia com praticidade antes de seguir viagem.</p>
+        </article>
+        <article class="amenity reveal">
+          <div class="amenity-icon">⌁</div><h3>Wi-Fi</h3><p>Conectividade para trabalho, comunicação e entretenimento.</p>
+        </article>
+        <article class="amenity reveal">
+          <div class="amenity-icon">🚗</div><h3>Estacionamento</h3><p>Mais tranquilidade para quem chega de carro.</p>
+        </article>
+        <article class="amenity reveal">
+          <div class="amenity-icon">❄</div><h3>Ar-condicionado</h3><p>Acomodações preparadas para diferentes temperaturas.</p>
+        </article>
+        <article class="amenity reveal">
+          <div class="amenity-icon">▣</div><h3>TV e frigobar</h3><p>Comodidade no quarto para uma estadia mais confortável.</p>
+        </article>
+        <article class="amenity reveal">
+          <div class="amenity-icon">◷</div><h3>Recepção 24h</h3><p>Atendimento para quem chega em diferentes horários.</p>
+        </article>
       </div>
     </section>
 
     <section class="location section" id="localizacao">
-      <div class="location-card reveal">
+      <div class="location-card reveal tilt-card">
         <span class="section-kicker">LOCALIZAÇÃO</span>
         <h2>No caminho certo.</h2>
         <p>BR-116, Km 55 s/n — São Cristóvão<br>Papanduva — SC, 89370-000</p>
@@ -122,25 +182,36 @@
           <a class="btn ghost dark" href="tel:+554736532288">(47) 3653-2288</a>
         </div>
       </div>
-      <div class="location-graphic"><span>55</span><small>KM • BR-116</small></div>
+
+      <div class="location-graphic reveal depth-panel">
+        <div class="route-line"></div>
+        <span>55</span><small>KM • BR-116</small>
+        <div class="route-dot"></div>
+      </div>
     </section>
 
     <section class="final-cta section reveal">
-      <img src="assets/hotel-zenf-emblem.png" alt="Hotel Zenf" />
+      <div class="final-emblem"><img src="assets/hotel-zenf-emblem.png" alt="Hotel Zenf"></div>
       <span class="section-kicker">SUA ESTADIA COMEÇA AQUI</span>
-      <h2>Consulte agora<br>seu próximo quarto.</h2>
-      <p>Fale diretamente com o Hotel Zenf e confirme disponibilidade, valores e condições.</p>
+      <h2>Consulte seu<br>próximo quarto.</h2>
+      <p>Fale diretamente com o Hotel Zenf para confirmar disponibilidade, valores e condições.</p>
       <a class="btn primary large" href="https://wa.me/554736532288?text=Olá%2C%20vim%20pelo%20site%20e%20gostaria%20de%20consultar%20disponibilidade%20no%20Hotel%20Zenf." target="_blank" rel="noopener">Reservar pelo WhatsApp</a>
     </section>
   </main>
 
   <footer>
-    <div class="footer-brand"><img src="assets/hotel-zenf-emblem.png" alt=""><div><strong>Hotel Zenf</strong><span>Papanduva • Santa Catarina</span></div></div>
+    <div class="footer-brand">
+      <img src="assets/hotel-zenf-emblem.png" alt="">
+      <div><strong>Hotel Zenf</strong><span>Papanduva • Santa Catarina</span></div>
+    </div>
     <div class="footer-links"><a href="#quartos">Quartos</a><a href="#estrutura">Estrutura</a><a href="#localizacao">Localização</a></div>
     <p>© <span id="year"></span> Hotel Zenf. Todos os direitos reservados.</p>
   </footer>
 
-  <a class="wa-float" href="https://wa.me/554736532288?text=Olá%2C%20vim%20pelo%20site%20do%20Hotel%20Zenf." target="_blank" rel="noopener" aria-label="Falar com Hotel Zenf pelo WhatsApp">WhatsApp</a>
+  <a class="wa-float" href="https://wa.me/554736532288?text=Olá%2C%20vim%20pelo%20site%20do%20Hotel%20Zenf." target="_blank" rel="noopener" aria-label="Falar com Hotel Zenf pelo WhatsApp">
+    <span>WhatsApp</span>
+  </a>
+
   <script src="script.js"></script>
 </body>
 </html>

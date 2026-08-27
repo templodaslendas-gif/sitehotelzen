@@ -1,3 +1,10 @@
-# Hotel Zenf — Site premium v3
+Hotel Zenf — Site Premium v4
 
-Site estático responsivo. Abra `index.html` localmente ou publique a pasta inteira em Vercel/Netlify/GitHub Pages.
+Alterações:
+- Fotografias dos quartos aprimoradas e ampliadas para 1920 px de largura.
+- Hero reformulada com fotografia real de acomodação.
+- Removidos os números 01/02/03... da seção de estrutura.
+- Seções com profundidade, parallax, cards 3D, tilt em desktop e animações de scroll.
+- Tipografia e composição revisadas para reduzir aparência genérica/artificial.
+- Responsivo para mobile, tablet, notebook e desktop.
+- CTA do WhatsApp preservado.
