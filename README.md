@@ -8,3 +8,7 @@ Alterações:
 - Tipografia e composição revisadas para reduzir aparência genérica/artificial.
 - Responsivo para mobile, tablet, notebook e desktop.
 - CTA do WhatsApp preservado.
+
+- Painel decorativo KM 55 removido da seção Localização.
+- Localização centralizada em bloco único.
+- WhatsApp convertido em botão circular pulsante com ícone correto.

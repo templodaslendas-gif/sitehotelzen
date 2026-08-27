@@ -97,7 +97,7 @@ button{font:inherit}
 .amenity-icon{width:44px;height:44px;border:1px solid rgba(225,194,124,.28);border-radius:14px;display:grid;place-items:center;color:var(--gold2);font-size:19px;background:rgba(225,194,124,.04)}
 .amenity h3{font-family:"Playfair Display",Georgia,serif;font-size:25px;margin:28px 0 8px}
 .amenity p{font-size:12px;line-height:1.75;color:var(--muted);margin:0}
-.location{background:var(--cream);color:var(--dark);display:grid;grid-template-columns:1.12fr .88fr;gap:22px}
+.location{background:var(--cream);color:var(--dark);display:block}
 .location-card{padding:48px;border:1px solid #d8d0c0;border-radius:26px;background:rgba(255,255,255,.42);box-shadow:0 35px 80px rgba(77,60,34,.08);transform-style:preserve-3d}
 .location-card h2{font-size:62px;margin:10px 0 18px}
 .location-card p{color:#615b50;line-height:1.8}
@@ -157,4 +157,36 @@ footer>p{width:100%;font-size:10px;color:#747169}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*:before,*:after{animation:none!important;transition:none!important}
+}
+
+.location-card{max-width:900px;margin:0 auto}
+
+/* WhatsApp flutuante pulsante */
+.wa-float{
+  position:fixed;right:24px;bottom:24px;z-index:60;
+  width:62px;height:62px;padding:0;border-radius:50%;
+  display:grid;place-items:center;
+  background:#25D366;color:#fff;
+  box-shadow:0 12px 34px rgba(0,0,0,.28);
+  transition:transform .25s ease,box-shadow .25s ease;
+  isolation:isolate;
+}
+.wa-float:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 16px 42px rgba(0,0,0,.34)}
+.wa-float svg{width:34px;height:34px;position:relative;z-index:2}
+.wa-pulse{
+  position:absolute;inset:0;border-radius:50%;
+  background:#25D366;z-index:-1;
+  animation:waPulse 1.8s ease-out infinite;
+}
+@keyframes waPulse{
+  0%{transform:scale(.92);opacity:.7}
+  70%{transform:scale(1.55);opacity:0}
+  100%{transform:scale(1.55);opacity:0}
+}
+@media(max-width:560px){
+  .wa-float{right:16px;bottom:16px;width:56px;height:56px}
+  .wa-float svg{width:31px;height:31px}
+}
+@media(prefers-reduced-motion:reduce){
+  .wa-pulse{animation:none!important}
 }
