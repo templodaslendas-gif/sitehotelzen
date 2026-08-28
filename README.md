@@ -39,3 +39,8 @@ Alterações:
 - Ícone de Wi-Fi substituído por símbolo padrão em três ondas azuis.
 
 - V10: removido “Role para explorar” e corrigido conflito entre scripts V8/V9 que podia deixar os demais quartos pretos.
+
+- V11: scroll de acomodações refeito usando posição absoluta da seção + altura real do percurso.
+- Desktop: troca de categoria e fotos responde ao scroll do mouse.
+- Mobile/tablet: cards entram com animação por IntersectionObserver e fotos alternam enquanto visíveis.
+- Café da manhã com contraste, tipografia e tamanhos revisados para melhor leitura.

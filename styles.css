@@ -434,3 +434,186 @@ footer>p{width:100%;font-size:10px;color:#747169}
 .room-stage .story-panel.is-active{visibility:visible}
 .room-stage .story-panel:not(.is-active){visibility:hidden}
 @media(max-width:980px){.room-stage .story-panel,.room-stage .story-panel:not(.is-active){visibility:visible}}
+
+
+/* =========================================================
+   V11 — Scroll de acomodações corrigido + mobile responsivo
+   ========================================================= */
+
+/* Desktop: uma única área longa, com palco sticky real */
+@media (min-width:981px){
+  .rooms-cinematic{
+    min-height:560vh !important;
+    height:auto !important;
+    overflow:visible !important;
+  }
+  .rooms-interactive-wrap{
+    height:560vh !important;
+    min-height:560vh !important;
+    position:relative !important;
+  }
+  .rooms-sticky-stage{
+    position:sticky !important;
+    top:0 !important;
+    height:100svh !important;
+    min-height:100svh !important;
+    overflow:hidden !important;
+    align-items:center !important;
+  }
+  .room-stage{
+    height:min(76svh,760px) !important;
+    min-height:540px;
+  }
+
+  /* Movimento perceptível entre os quartos */
+  .room-stage .story-panel{
+    opacity:0 !important;
+    transform:translate3d(12%,12%,0) scale(.91) rotateY(-7deg) !important;
+    filter:blur(8px) brightness(.72) !important;
+    transition:
+      opacity .55s ease,
+      transform .78s cubic-bezier(.16,.78,.21,1),
+      filter .55s ease !important;
+  }
+  .room-stage .story-panel.is-active{
+    opacity:1 !important;
+    transform:translate3d(0,0,0) scale(1) rotateY(0deg) !important;
+    filter:none !important;
+    z-index:5 !important;
+  }
+  .room-stage .story-panel.is-before{
+    opacity:0 !important;
+    transform:translate3d(-10%,-10%,0) scale(.93) rotateY(6deg) !important;
+    filter:blur(6px) brightness(.74) !important;
+  }
+}
+
+/* Mobile/tablet: não trava a página; cada quarto entra animado */
+@media (max-width:980px){
+  .rooms-cinematic,
+  .rooms-interactive-wrap{
+    height:auto !important;
+    min-height:auto !important;
+  }
+  .rooms-sticky-stage{
+    position:relative !important;
+    top:auto !important;
+    height:auto !important;
+    min-height:0 !important;
+    display:block !important;
+    overflow:visible !important;
+  }
+  .rooms-narrative{
+    margin-bottom:30px !important;
+  }
+  .room-stage{
+    height:auto !important;
+    min-height:0 !important;
+    display:grid !important;
+    gap:20px !important;
+  }
+  .room-stage .story-panel,
+  .room-stage .story-panel.is-active,
+  .room-stage .story-panel.is-before{
+    position:relative !important;
+    inset:auto !important;
+    width:100% !important;
+    height:min(72svh,680px) !important;
+    min-height:510px !important;
+    opacity:0 !important;
+    transform:translateY(42px) scale(.965) !important;
+    filter:none !important;
+    pointer-events:auto !important;
+    transition:opacity .7s ease,transform .8s cubic-bezier(.16,.78,.21,1) !important;
+  }
+  .room-stage .story-panel.mobile-in{
+    opacity:1 !important;
+    transform:translateY(0) scale(1) !important;
+  }
+  .room-stage .story-panel .story-media img{
+    transform:scale(1.04);
+  }
+  .room-stage .story-panel.mobile-in .story-media img.active{
+    transform:scale(1);
+  }
+}
+
+@media (max-width:560px){
+  .room-stage .story-panel,
+  .room-stage .story-panel.is-active,
+  .room-stage .story-panel.is-before{
+    height:68svh !important;
+    min-height:490px !important;
+  }
+  .room-stage .story-copy p{font-size:13px !important}
+}
+
+/* Café da manhã — mais contraste, tamanho e leitura */
+.breakfast-showcase{
+  position:relative;
+  background:
+    radial-gradient(circle at 78% 18%,rgba(181,138,60,.15),transparent 34%),
+    linear-gradient(135deg,#eadcc4 0%,#f3e9d8 100%) !important;
+  color:#17140f !important;
+  gap:44px !important;
+}
+.breakfast-copy{
+  padding:34px 34px 34px 18px !important;
+  max-width:620px;
+}
+.breakfast-copy .section-kicker{
+  color:#8d622a !important;
+  font-size:12px !important;
+  font-weight:700 !important;
+  letter-spacing:.23em !important;
+  background:rgba(255,255,255,.38);
+  border:1px solid rgba(141,98,42,.18);
+  border-radius:999px;
+  padding:8px 12px;
+}
+.breakfast-copy h2{
+  color:#15120d !important;
+  font-size:clamp(58px,5.8vw,86px) !important;
+  line-height:.93 !important;
+  letter-spacing:-.045em !important;
+  margin:18px 0 22px !important;
+}
+.breakfast-copy p{
+  color:#40382e !important;
+  font-size:16px !important;
+  line-height:1.75 !important;
+  max-width:560px;
+}
+.breakfast-media{
+  box-shadow:0 35px 90px rgba(66,43,16,.18) !important;
+}
+.breakfast-media img{
+  height:520px !important;
+}
+
+@media(max-width:980px){
+  .breakfast-showcase{
+    grid-template-columns:1fr !important;
+    gap:24px !important;
+  }
+  .breakfast-copy{
+    padding:4px 4px 12px !important;
+    max-width:none;
+  }
+  .breakfast-copy h2{
+    font-size:clamp(50px,9vw,72px) !important;
+  }
+  .breakfast-copy p{
+    font-size:15px !important;
+  }
+  .breakfast-media img{
+    height:min(62vw,500px) !important;
+    min-height:340px;
+  }
+}
+@media(max-width:560px){
+  .breakfast-copy .section-kicker{font-size:10px !important}
+  .breakfast-copy h2{font-size:46px !important;line-height:.98 !important}
+  .breakfast-copy p{font-size:14px !important}
+  .breakfast-media img{height:330px !important;min-height:0}
+}
