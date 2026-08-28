@@ -57,3 +57,8 @@ Alterações:
 - Cada quarto agora é clicável e abre galeria fullscreen.
 - Galeria possui miniaturas, setas, teclado, contador e swipe no celular.
 - As imagens originais continuam preservadas no pacote.
+
+- V14: galeria corrigida para mostrar a imagem inteira, sem corte vertical/horizontal.
+- Stage da galeria usa max-width/max-height e object-fit contain de forma forçada.
+- Standard Duplo e Luxo Individual foram reprocessados com nitidez/contraste conservadores.
+- Esses dois ainda dependem das fotos originais do hotel para obter o mesmo nível real de detalhe das demais categorias.
