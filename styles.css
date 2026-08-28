@@ -426,3 +426,11 @@ footer>p{width:100%;font-size:10px;color:#747169}
   .room-stage .story-panel,.room-stage .story-media img,.room-progress-track i{transition:none!important}
   .wheel-mouse i{animation:none!important}
 }
+
+/* V10 stability fixes */
+.wheel-cue{display:none!important}
+.room-stage{overflow:visible}
+.room-stage .story-panel{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.room-stage .story-panel.is-active{visibility:visible}
+.room-stage .story-panel:not(.is-active){visibility:hidden}
+@media(max-width:980px){.room-stage .story-panel,.room-stage .story-panel:not(.is-active){visibility:visible}}

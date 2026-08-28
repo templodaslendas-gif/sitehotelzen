@@ -103,32 +103,7 @@ document.getElementById('year').textContent=new Date().getFullYear();
   applyConsent();
 })();
 
-/* v8 — narrativa de scroll e troca progressiva das fotos */
-(() => {
-  const panels=[...document.querySelectorAll('.story-panel')];
-  if(!panels.length) return;
-  let raf=0;
-  function updateRoomStories(){
-    const vh=innerHeight;
-    panels.forEach(panel=>{
-      const rect=panel.getBoundingClientRect();
-      const progress=Math.max(0,Math.min(0.999,(vh-rect.top)/(vh+rect.height)));
-      const imgs=[...panel.querySelectorAll('.story-media img')];
-      const idx=Math.min(imgs.length-1,Math.floor(progress*imgs.length));
-      imgs.forEach((img,i)=>img.classList.toggle('active',i===idx));
-      if(matchMedia('(pointer:fine)').matches && innerWidth>980){
-        panel.style.transform=`translate3d(${panel.classList.contains('alt')?'-7%':'0'},${(progress-.5)*-18}px,0) rotateX(${(progress-.5)*1.2}deg)`;
-      }
-    });
-    raf=0;
-  }
-  addEventListener('scroll',()=>{if(!raf) raf=requestAnimationFrame(updateRoomStories)},{passive:true});
-  addEventListener('resize',updateRoomStories,{passive:true});
-  updateRoomStories();
-})();
-
-
-/* V9 — sequência de quartos controlada pelo scroll */
+/* V10 — sequência de quartos controlada pelo scroll, sem conflito de transforms */
 (() => {
   const section=document.querySelector('.rooms-cinematic');
   const panels=[...document.querySelectorAll('.room-stage .story-panel')];
@@ -139,52 +114,60 @@ document.getElementById('year').textContent=new Date().getFullYear();
   if(!section || !panels.length) return;
 
   if(totalEl) totalEl.textContent=String(panels.length).padStart(2,'0');
-  let active=-1;
-  let imageActive=-1;
+  let activeIndex=-1;
+  let activeImageByPanel=new Map();
 
-  function applyPanel(index, localProgress){
-    if(index!==active){
-      active=index;
-      panels.forEach((p,i)=>{
-        p.classList.toggle('is-active',i===index);
-        p.classList.toggle('is-before',i<index);
-      });
+  function setPanel(index, localProgress=0){
+    index=Math.max(0,Math.min(panels.length-1,index));
+    panels.forEach((p,i)=>{
+      p.classList.toggle('is-active',i===index);
+      p.classList.toggle('is-before',i<index);
+      p.style.removeProperty('transform');
+    });
+
+    if(index!==activeIndex){
+      activeIndex=index;
       if(currentEl) currentEl.textContent=String(index+1).padStart(2,'0');
-      if(nameEl) nameEl.textContent=panels[index]?.dataset.roomName||'';
+      if(nameEl) nameEl.textContent=panels[index].dataset.roomName||'';
       if(bar) bar.style.width=`${((index+1)/panels.length)*100}%`;
     }
 
     const imgs=[...panels[index].querySelectorAll('.story-media img')];
-    if(imgs.length>1){
-      const imgIndex=Math.min(imgs.length-1,Math.floor(localProgress*imgs.length));
-      if(imgIndex!==imageActive){
-        imageActive=imgIndex;
-        imgs.forEach((im,i)=>im.classList.toggle('active',i===imgIndex));
+    if(imgs.length){
+      const imgIndex=Math.min(imgs.length-1,Math.floor(Math.max(0,Math.min(.999,localProgress))*imgs.length));
+      if(activeImageByPanel.get(index)!==imgIndex){
+        imgs.forEach((img,i)=>img.classList.toggle('active',i===imgIndex));
+        activeImageByPanel.set(index,imgIndex);
       }
-    }else if(imgs[0]){
-      imgs[0].classList.add('active');
     }
+  }
+
+  function setMobile(){
+    panels.forEach(p=>{
+      p.classList.add('is-active');
+      p.classList.remove('is-before');
+      p.style.removeProperty('transform');
+      const first=p.querySelector('.story-media img');
+      if(first && !p.querySelector('.story-media img.active')) first.classList.add('active');
+    });
   }
 
   function update(){
-    if(matchMedia('(max-width:980px)').matches){
-      panels.forEach(p=>p.classList.add('is-active'));
-      return;
-    }
+    if(matchMedia('(max-width:980px)').matches){setMobile();return;}
     const rect=section.getBoundingClientRect();
-    const scrollable=section.offsetHeight-innerHeight;
+    const scrollable=Math.max(1,section.offsetHeight-innerHeight);
     const travelled=Math.min(Math.max(-rect.top,0),scrollable);
-    const progress=scrollable>0?travelled/scrollable:0;
-    const scaled=progress*panels.length;
-    const index=Math.min(panels.length-1,Math.floor(scaled));
-    const local=Math.min(.999,Math.max(0,scaled-index));
-    applyPanel(index,local);
+    const progress=travelled/scrollable;
+    const scaled=Math.min(panels.length-.0001,progress*panels.length);
+    const index=Math.floor(scaled);
+    const local=scaled-index;
+    setPanel(index,local);
   }
 
   let raf=0;
-  addEventListener('scroll',()=>{
-    if(!raf) raf=requestAnimationFrame(()=>{update();raf=0});
-  },{passive:true});
-  addEventListener('resize',update,{passive:true});
+  const schedule=()=>{if(!raf) raf=requestAnimationFrame(()=>{update();raf=0})};
+  addEventListener('scroll',schedule,{passive:true});
+  addEventListener('resize',schedule,{passive:true});
+  setPanel(0,0);
   update();
 })();

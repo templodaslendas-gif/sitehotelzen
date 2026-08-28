@@ -37,3 +37,5 @@ Alterações:
 - CTA da seção alterado para reserva via WhatsApp.
 - Standard com ar-condicionado atualizado com as três fotos enviadas.
 - Ícone de Wi-Fi substituído por símbolo padrão em três ondas azuis.
+
+- V10: removido “Role para explorar” e corrigido conflito entre scripts V8/V9 que podia deixar os demais quartos pretos.
