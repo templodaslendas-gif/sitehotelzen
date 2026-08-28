@@ -17,3 +17,10 @@ Alterações:
 - Frase institucional destacada em bloco premium.
 - Espaçamento vertical entre seções reduzido.
 - Headings e textos claros receberam contraste reforçado.
+
+- Banner de cookies/LGPD com aceitar, rejeitar e gerenciar categorias.
+- Consentimento persistido em localStorage.
+- Analíticos e marketing desativados por padrão.
+- Política de Privacidade e LGPD adicionada.
+- Política de Cookies adicionada.
+- Links legais e Gerenciar cookies adicionados ao rodapé.

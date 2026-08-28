@@ -198,7 +198,14 @@
       <img src="assets/hotel-zenf-emblem.png" alt="">
       <div><strong>Hotel Zenf</strong><span>Papanduva • Santa Catarina</span></div>
     </div>
-    <div class="footer-links"><a href="#quartos">Quartos</a><a href="#estrutura">Estrutura</a><a href="#localizacao">Localização</a></div>
+    <div class="footer-links">
+      <a href="#quartos">Quartos</a>
+      <a href="#estrutura">Estrutura</a>
+      <a href="#localizacao">Localização</a>
+      <a href="privacidade.html">Privacidade e LGPD</a>
+      <a href="cookies.html">Cookies</a>
+      <button class="footer-cookie-btn" id="manageCookiesFooter" type="button">Gerenciar cookies</button>
+    </div>
     <p>© <span id="year"></span> Hotel Zenf. Todos os direitos reservados.</p>
   </footer>
 
@@ -208,6 +215,70 @@
       <path fill="currentColor" d="M16.04 3C9.43 3 4.05 8.32 4.05 14.86c0 2.31.68 4.57 1.96 6.49L4 28.7l7.55-1.97a12.1 12.1 0 0 0 4.48.86h.01c6.61 0 11.99-5.32 11.99-11.86C28.03 9.18 22.65 3 16.04 3Zm0 21.98h-.01a9.47 9.47 0 0 1-4.03-.91l-.29-.14-4.48 1.17 1.2-4.33-.19-.3a9.18 9.18 0 0 1-1.49-5.02c0-5.13 4.2-9.31 9.35-9.31 2.5 0 4.84.97 6.6 2.72a9.21 9.21 0 0 1 2.74 6.59c0 5.13-4.2 9.53-9.4 9.53Zm5.13-6.97c-.28-.14-1.66-.81-1.92-.9-.26-.1-.45-.14-.64.14-.19.28-.73.9-.9 1.09-.16.19-.33.21-.61.07-.28-.14-1.18-.43-2.25-1.38a8.42 8.42 0 0 1-1.56-1.93c-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.16.19-.28.28-.47.09-.19.05-.35-.02-.5-.07-.14-.64-1.53-.88-2.1-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.5.07-.76.35-.26.28-1 1-1 2.42 0 1.42 1.04 2.79 1.18 2.98.14.19 2.04 3.1 4.94 4.35.69.3 1.23.48 1.65.61.69.22 1.32.19 1.82.12.56-.08 1.66-.67 1.89-1.32.24-.65.24-1.21.17-1.32-.07-.12-.26-.19-.54-.33Z"/>
     </svg>
   </a>
+
+
+  <section class="cookie-banner" id="cookieBanner" aria-live="polite" aria-label="Preferências de privacidade">
+    <div class="cookie-copy">
+      <strong>Privacidade e cookies</strong>
+      <p>Usamos armazenamento estritamente necessário para lembrar sua escolha de privacidade. Cookies analíticos ou de marketing permanecem desativados até sua autorização.</p>
+      <div class="cookie-links">
+        <a href="privacidade.html">Privacidade e LGPD</a>
+        <a href="cookies.html">Política de Cookies</a>
+      </div>
+    </div>
+    <div class="cookie-actions">
+      <button class="cookie-btn secondary" id="rejectCookies" type="button">Rejeitar não essenciais</button>
+      <button class="cookie-btn secondary" id="manageCookies" type="button">Gerenciar</button>
+      <button class="cookie-btn primary-cookie" id="acceptCookies" type="button">Aceitar todos</button>
+    </div>
+  </section>
+
+  <div class="cookie-modal" id="cookieModal" aria-hidden="true">
+    <div class="cookie-modal-card" role="dialog" aria-modal="true" aria-labelledby="cookieModalTitle">
+      <button class="cookie-close" id="cookieClose" type="button" aria-label="Fechar">×</button>
+      <span class="section-kicker">PRIVACIDADE</span>
+      <h2 id="cookieModalTitle">Gerenciar cookies</h2>
+      <p class="cookie-intro">Escolha quais categorias não essenciais autoriza. Os cookies necessários ficam sempre ativos porque são usados para funcionamento e registro da sua escolha.</p>
+
+      <div class="cookie-pref-row">
+        <div>
+          <strong>Necessários</strong>
+          <span>Funcionamento básico, segurança e registro da preferência de privacidade.</span>
+        </div>
+        <label class="switch disabled-switch" aria-label="Cookies necessários sempre ativos">
+          <input type="checkbox" checked disabled>
+          <span></span>
+        </label>
+      </div>
+
+      <div class="cookie-pref-row">
+        <div>
+          <strong>Analíticos</strong>
+          <span>Medição agregada de visitas e desempenho, somente se uma ferramenta desse tipo for habilitada.</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="analyticsCookies">
+          <span></span>
+        </label>
+      </div>
+
+      <div class="cookie-pref-row">
+        <div>
+          <strong>Marketing</strong>
+          <span>Mensuração de campanhas, remarketing ou publicidade, somente se uma ferramenta desse tipo for habilitada.</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="marketingCookies">
+          <span></span>
+        </label>
+      </div>
+
+      <div class="cookie-modal-actions">
+        <button class="cookie-btn secondary" id="rejectAllModal" type="button">Rejeitar não essenciais</button>
+        <button class="cookie-btn primary-cookie" id="saveCookiePrefs" type="button">Salvar preferências</button>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

@@ -55,3 +55,50 @@ if(finePointer){
 }
 
 document.getElementById('year').textContent=new Date().getFullYear();
+
+(() => {
+  const KEY='hotelZenfCookieConsentV1';
+  const banner=document.getElementById('cookieBanner');
+  const modal=document.getElementById('cookieModal');
+  const analytics=document.getElementById('analyticsCookies');
+  const marketing=document.getElementById('marketingCookies');
+
+  function readPrefs(){try{return JSON.parse(localStorage.getItem(KEY)||'null')}catch{return null}}
+  function savePrefs(prefs){
+    localStorage.setItem(KEY,JSON.stringify({
+      necessary:true,
+      analytics:!!prefs.analytics,
+      marketing:!!prefs.marketing,
+      savedAt:new Date().toISOString(),
+      version:1
+    }));
+    banner?.classList.remove('show');
+    modal?.classList.remove('show');
+    modal?.setAttribute('aria-hidden','true');
+    applyConsent();
+  }
+  function applyConsent(){
+    const p=readPrefs();
+    window.HotelZenfConsent=p||{necessary:true,analytics:false,marketing:false};
+  }
+  function openManager(){
+    const p=readPrefs()||{analytics:false,marketing:false};
+    if(analytics) analytics.checked=!!p.analytics;
+    if(marketing) marketing.checked=!!p.marketing;
+    modal?.classList.add('show');
+    modal?.setAttribute('aria-hidden','false');
+  }
+  function closeManager(){modal?.classList.remove('show');modal?.setAttribute('aria-hidden','true')}
+
+  document.getElementById('acceptCookies')?.addEventListener('click',()=>savePrefs({analytics:true,marketing:true}));
+  document.getElementById('rejectCookies')?.addEventListener('click',()=>savePrefs({analytics:false,marketing:false}));
+  document.getElementById('manageCookies')?.addEventListener('click',openManager);
+  document.getElementById('manageCookiesFooter')?.addEventListener('click',openManager);
+  document.getElementById('cookieClose')?.addEventListener('click',closeManager);
+  document.getElementById('rejectAllModal')?.addEventListener('click',()=>savePrefs({analytics:false,marketing:false}));
+  document.getElementById('saveCookiePrefs')?.addEventListener('click',()=>savePrefs({analytics:analytics?.checked,marketing:marketing?.checked}));
+  modal?.addEventListener('click',e=>{if(e.target===modal)closeManager()});
+
+  if(!readPrefs()) banner?.classList.add('show');
+  applyConsent();
+})();
