@@ -24,3 +24,8 @@ Alterações:
 - Política de Privacidade e LGPD adicionada.
 - Política de Cookies adicionada.
 - Links legais e Gerenciar cookies adicionados ao rodapé.
+- v8: vídeo real do hotel na hero.
+- Fotos novas do café da manhã, Standard Triplo, Standard Individual e Luxo Duplo incorporadas.
+- Seção de quartos transformada em narrativa interativa por scroll com troca progressiva de imagens.
+- Mobile/tablet usam fluxo vertical sem travar o scroll nativo.
+- Standard Duplo, Luxo Individual e Standard com ar-condicionado preparados para receber os arquivos restantes.

@@ -102,3 +102,27 @@ document.getElementById('year').textContent=new Date().getFullYear();
   if(!readPrefs()) banner?.classList.add('show');
   applyConsent();
 })();
+
+/* v8 — narrativa de scroll e troca progressiva das fotos */
+(() => {
+  const panels=[...document.querySelectorAll('.story-panel')];
+  if(!panels.length) return;
+  let raf=0;
+  function updateRoomStories(){
+    const vh=innerHeight;
+    panels.forEach(panel=>{
+      const rect=panel.getBoundingClientRect();
+      const progress=Math.max(0,Math.min(0.999,(vh-rect.top)/(vh+rect.height)));
+      const imgs=[...panel.querySelectorAll('.story-media img')];
+      const idx=Math.min(imgs.length-1,Math.floor(progress*imgs.length));
+      imgs.forEach((img,i)=>img.classList.toggle('active',i===idx));
+      if(matchMedia('(pointer:fine)').matches && innerWidth>980){
+        panel.style.transform=`translate3d(${panel.classList.contains('alt')?'-7%':'0'},${(progress-.5)*-18}px,0) rotateX(${(progress-.5)*1.2}deg)`;
+      }
+    });
+    raf=0;
+  }
+  addEventListener('scroll',()=>{if(!raf) raf=requestAnimationFrame(updateRoomStories)},{passive:true});
+  addEventListener('resize',updateRoomStories,{passive:true});
+  updateRoomStories();
+})();

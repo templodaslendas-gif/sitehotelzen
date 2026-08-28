@@ -43,7 +43,9 @@
     <section class="hero" id="inicio">
       <div class="hero-stage">
         <div class="hero-media depth-layer" data-depth="0.12">
-          <img src="assets/hero-hotel-zenf.jpg" alt="Acomodação do Hotel Zenf" />
+          <video autoplay muted loop playsinline preload="metadata" poster="assets/cafe-manha.jpg" aria-label="Vídeo do Hotel Zenf">
+            <source src="assets/hotel-hero.mp4" type="video/mp4" />
+          </video>
         </div>
         <div class="hero-glow depth-layer" data-depth="0.04"></div>
         <div class="hero-vignette"></div>
@@ -86,62 +88,66 @@
       </div>
     </section>
 
-    <section class="rooms section" id="quartos">
-      <div class="rooms-backdrop" aria-hidden="true"></div>
-      <div class="section-head reveal">
-        <div>
-          <span class="section-kicker">ACOMODAÇÕES</span>
-          <h2>Escolha seu quarto.</h2>
-        </div>
-        <p>Conheça as principais categorias. Valores informados pelo hotel; disponibilidade e condições são confirmadas diretamente pelo WhatsApp.</p>
+    <section class="rooms rooms-scroll" id="quartos">
+      <div class="rooms-sticky-head reveal">
+        <span class="section-kicker">ACOMODAÇÕES</span>
+        <h2>Quartos para cada<br><em>tipo de viagem.</em></h2>
+        <p>Role para conhecer as categorias. As fotos abaixo são do próprio Hotel Zenf e a reserva é confirmada diretamente pelo WhatsApp.</p>
       </div>
 
-      <div class="room-grid">
-        <article class="room-card reveal tilt-card">
-          <div class="room-image"><img src="assets/standard-triplo.jpg" alt="Quarto Standard Triplo"></div>
-          <div class="room-info">
-            <span>ATÉ 3 HÓSPEDES</span><h3>Standard Triplo</h3>
-            <p>Três camas de solteiro, ar-condicionado e configuração prática para grupos ou equipes.</p>
-            <div class="room-bottom"><div class="price"><small>a partir de</small><strong>R$ 420</strong></div><a href="https://wa.me/554736532288?text=Olá%2C%20gostaria%20de%20consultar%20o%20quarto%20Standard%20Triplo." target="_blank" rel="noopener">Consultar →</a></div>
+      <div class="room-story">
+        <article class="story-panel" data-room="triplo">
+          <div class="story-media">
+            <img src="assets/standard-triplo-1.jpg" alt="Standard Triplo do Hotel Zenf" class="active">
+            <img src="assets/standard-triplo-2.jpg" alt="Banheiro do Standard Triplo do Hotel Zenf">
+          </div>
+          <div class="story-copy reveal">
+            <span>ATÉ 3 HÓSPEDES</span>
+            <h3>Standard Triplo</h3>
+            <p>Três camas de solteiro, ambiente confortável e estrutura prática para famílias, equipes e viajantes em grupo.</p>
+            <div class="story-actions"><strong>R$ 420</strong><a href="https://wa.me/554736532288?text=Olá%2C%20gostaria%20de%20consultar%20o%20Standard%20Triplo%20do%20Hotel%20Zenf." target="_blank" rel="noopener">Consultar disponibilidade</a></div>
           </div>
         </article>
 
-        <article class="room-card reveal tilt-card">
-          <div class="room-image"><img src="assets/standard-individual.jpg" alt="Quarto Standard Individual"></div>
-          <div class="room-info">
-            <span>INDIVIDUAL</span><h3>Standard Individual</h3>
-            <p>Opção prática para quem viaja sozinho, com os itens essenciais para descansar bem.</p>
-            <div class="room-bottom"><div class="price"><small>a partir de</small><strong>R$ 140</strong></div><a href="https://wa.me/554736532288?text=Olá%2C%20gostaria%20de%20consultar%20o%20quarto%20Standard%20Individual." target="_blank" rel="noopener">Consultar →</a></div>
+        <article class="story-panel alt" data-room="individual">
+          <div class="story-media">
+            <img src="assets/standard-individual-1.jpg" alt="Standard Individual do Hotel Zenf" class="active">
+            <img src="assets/standard-individual-2.jpg" alt="Standard Individual do Hotel Zenf">
+            <img src="assets/standard-individual-3.jpg" alt="Banheiro do Standard Individual do Hotel Zenf">
+          </div>
+          <div class="story-copy reveal">
+            <span>INDIVIDUAL</span>
+            <h3>Standard Individual</h3>
+            <p>Uma opção objetiva e confortável para quem viaja sozinho, com cama de casal, TV e frigobar.</p>
+            <div class="story-actions"><strong>R$ 140</strong><a href="https://wa.me/554736532288?text=Olá%2C%20gostaria%20de%20consultar%20o%20Standard%20Individual%20do%20Hotel%20Zenf." target="_blank" rel="noopener">Consultar disponibilidade</a></div>
           </div>
         </article>
 
-        <article class="room-card room-card-wide reveal tilt-card">
-          <div class="room-image"><img src="assets/luxo-duplo.jpg" alt="Quarto Luxo Duplo"></div>
-          <div class="room-info">
-            <span>MAIS ESPAÇO</span><h3>Luxo Duplo</h3>
-            <p>Cama King size e ambiente amplo para quem busca mais conforto durante a estadia.</p>
-            <div class="room-bottom"><div class="price"><small>a partir de</small><strong>R$ 320</strong></div><a href="https://wa.me/554736532288?text=Olá%2C%20gostaria%20de%20consultar%20o%20quarto%20Luxo%20Duplo." target="_blank" rel="noopener">Consultar →</a></div>
+        <article class="story-panel" data-room="luxo-duplo">
+          <div class="story-media">
+            <img src="assets/luxo-duplo-1.jpg" alt="Luxo Duplo do Hotel Zenf" class="active">
+            <img src="assets/luxo-duplo-2.jpg" alt="Banheiro do Luxo Duplo do Hotel Zenf">
+            <img src="assets/luxo-duplo-3.jpg" alt="Luxo Duplo do Hotel Zenf">
           </div>
-        </article>
-
-        <article class="room-card reveal tilt-card">
-          <div class="room-image"><img src="assets/standard-duplo.jpg" alt="Quarto Standard Duplo"></div>
-          <div class="room-info">
-            <span>DUPLO</span><h3>Standard Duplo</h3>
-            <p>Duas camas, ar-condicionado e configuração confortável para duas pessoas.</p>
-            <div class="room-bottom"><div class="price"><small>a partir de</small><strong>R$ 320</strong></div><a href="https://wa.me/554736532288?text=Olá%2C%20gostaria%20de%20consultar%20o%20quarto%20Standard%20Duplo." target="_blank" rel="noopener">Consultar →</a></div>
-          </div>
-        </article>
-
-        <article class="room-card reveal tilt-card">
-          <div class="room-image"><img src="assets/luxo-individual.jpg" alt="Quarto Luxo Individual"></div>
-          <div class="room-info">
-            <span>INDIVIDUAL PREMIUM</span><h3>Luxo Individual</h3>
-            <p>Cama ampla e ambiente confortável para uma estadia individual com mais comodidade.</p>
-            <div class="room-bottom"><div class="price"><small>a partir de</small><strong>R$ 220</strong></div><a href="https://wa.me/554736532288?text=Olá%2C%20gostaria%20de%20consultar%20o%20quarto%20Luxo%20Individual." target="_blank" rel="noopener">Consultar →</a></div>
+          <div class="story-copy reveal">
+            <span>MAIS ESPAÇO</span>
+            <h3>Luxo Duplo</h3>
+            <p>Ambiente amplo, cama de casal e uma estrutura pensada para quem busca mais conforto durante a estadia.</p>
+            <div class="story-actions"><strong>R$ 320</strong><a href="https://wa.me/554736532288?text=Olá%2C%20gostaria%20de%20consultar%20o%20Luxo%20Duplo%20do%20Hotel%20Zenf." target="_blank" rel="noopener">Consultar disponibilidade</a></div>
           </div>
         </article>
       </div>
+
+      <div class="pending-rooms reveal">
+        <article><span>STANDARD DUPLO</span><h3>Standard Duplo</h3><p>Galeria com as novas fotos será incorporada assim que os arquivos restantes forem enviados.</p><strong>R$ 320</strong></article>
+        <article><span>LUXO INDIVIDUAL</span><h3>Luxo Individual</h3><p>Galeria com as novas fotos será incorporada assim que os arquivos restantes forem enviados.</p><strong>R$ 220</strong></article>
+        <article><span>COM AR-CONDICIONADO</span><h3>Standard com ar-condicionado</h3><p>Categoria confirmada. As três imagens enviadas em seguida serão associadas a este quarto na próxima atualização do pacote.</p></article>
+      </div>
+    </section>
+
+    <section class="breakfast-showcase section" id="cafe">
+      <div class="breakfast-media reveal depth-panel"><img src="assets/cafe-manha.jpg" alt="Café da manhã do Hotel Zenf"></div>
+      <div class="breakfast-copy reveal"><span class="section-kicker">CAFÉ DA MANHÃ</span><h2>Comece o dia<br>bem servido.</h2><p>Um café da manhã completo, servido em ambiente agradável, para quem precisa seguir viagem com tranquilidade.</p></div>
     </section>
 
     <section class="experience section" id="estrutura">
