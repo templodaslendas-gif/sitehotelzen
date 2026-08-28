@@ -104,136 +104,66 @@ document.getElementById('year').textContent=new Date().getFullYear();
 })();
 
 
-/* V11 — scroll cinematográfico robusto */
+/* V12 — controle por IntersectionObserver: sem cards escondidos */
 (() => {
-  const section = document.querySelector('.rooms-cinematic');
-  const wrap = document.querySelector('.rooms-interactive-wrap');
-  const panels = [...document.querySelectorAll('.room-stage .story-panel')];
-  const currentEl = document.getElementById('roomCurrent');
-  const totalEl = document.getElementById('roomTotal');
-  const bar = document.getElementById('roomProgressBar');
-  const nameEl = document.getElementById('roomProgressName');
+  const rooms=[...document.querySelectorAll('.rooms-v12-list .v12-room')];
+  const currentEl=document.getElementById('roomCurrent');
+  const totalEl=document.getElementById('roomTotal');
+  const bar=document.getElementById('roomProgressBar');
+  const nameEl=document.getElementById('roomProgressName');
 
-  if (!section || !wrap || !panels.length) return;
+  if(!rooms.length) return;
+  if(totalEl) totalEl.textContent=String(rooms.length).padStart(2,'0');
 
-  if (totalEl) totalEl.textContent = String(panels.length).padStart(2,'0');
+  let currentIndex=0;
+  const timers=new WeakMap();
 
-  let desktopIndex = -1;
-  const imgIndexByPanel = new Map();
+  function updateProgress(index){
+    currentIndex=index;
+    rooms.forEach((room,i)=>room.classList.toggle('is-current',i===index));
+    if(currentEl) currentEl.textContent=String(index+1).padStart(2,'0');
+    if(nameEl) nameEl.textContent=rooms[index]?.dataset.roomName||'';
+    if(bar) bar.style.width=`${((index+1)/rooms.length)*100}%`;
+  }
 
-  function setDesktopPanel(index, localProgress) {
-    index = Math.max(0, Math.min(panels.length - 1, index));
+  function startSlideshow(room){
+    const imgs=[...room.querySelectorAll('.story-media img')];
+    if(imgs.length<2 || timers.has(room)) return;
+    let idx=0;
+    const id=setInterval(()=>{
+      const rect=room.getBoundingClientRect();
+      const visible=rect.bottom>0 && rect.top<innerHeight;
+      if(!visible) return;
+      idx=(idx+1)%imgs.length;
+      imgs.forEach((img,i)=>img.classList.toggle('active',i===idx));
+    },2800);
+    timers.set(room,id);
+  }
 
-    panels.forEach((panel, i) => {
-      panel.classList.toggle('is-active', i === index);
-      panel.classList.toggle('is-before', i < index);
-      panel.classList.remove('mobile-in');
-    });
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>{
+      const visible=entries
+        .filter(e=>e.isIntersecting)
+        .sort((a,b)=>b.intersectionRatio-a.intersectionRatio);
 
-    if (desktopIndex !== index) {
-      desktopIndex = index;
-      if (currentEl) currentEl.textContent = String(index + 1).padStart(2,'0');
-      if (nameEl) nameEl.textContent = panels[index].dataset.roomName || '';
-      if (bar) bar.style.width = `${((index + 1) / panels.length) * 100}%`;
-    }
+      visible.forEach(e=>startSlideshow(e.target));
 
-    const imgs = [...panels[index].querySelectorAll('.story-media img')];
-    if (imgs.length) {
-      const safeLocal = Math.max(0, Math.min(.9999, localProgress));
-      const imageIndex = Math.min(imgs.length - 1, Math.floor(safeLocal * imgs.length));
-      if (imgIndexByPanel.get(index) !== imageIndex) {
-        imgs.forEach((img, i) => img.classList.toggle('active', i === imageIndex));
-        imgIndexByPanel.set(index, imageIndex);
+      if(visible.length){
+        const best=visible[0].target;
+        const index=rooms.indexOf(best);
+        if(index>=0) updateProgress(index);
       }
-    }
-  }
-
-  function desktopUpdate() {
-    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-    const travel = Math.max(1, wrap.offsetHeight - window.innerHeight);
-    const y = Math.max(0, Math.min(window.scrollY - sectionTop, travel));
-    const progress = y / travel;
-
-    /* divide o percurso igualmente entre os seis quartos */
-    const scaled = Math.min(panels.length - 0.00001, progress * panels.length);
-    const index = Math.floor(scaled);
-    const localProgress = scaled - index;
-
-    setDesktopPanel(index, localProgress);
-  }
-
-  let mobileObserver;
-  function enableMobile() {
-    if (mobileObserver) return;
-
-    panels.forEach(panel => {
-      panel.classList.remove('is-active','is-before');
-      const imgs = [...panel.querySelectorAll('.story-media img')];
-      imgs.forEach((img,i) => img.classList.toggle('active', i === 0));
+    },{
+      root:null,
+      rootMargin:'-18% 0px -18% 0px',
+      threshold:[0.2,0.35,0.5,0.65,0.8]
     });
 
-    mobileObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('mobile-in');
-
-          /* troca suave de fotos quando o card entra no mobile */
-          const imgs = [...entry.target.querySelectorAll('.story-media img')];
-          if (imgs.length > 1 && !entry.target.dataset.slideshowStarted) {
-            entry.target.dataset.slideshowStarted = '1';
-            let idx = 0;
-            const timer = setInterval(() => {
-              if (!document.body.contains(entry.target)) {
-                clearInterval(timer);
-                return;
-              }
-              const rect = entry.target.getBoundingClientRect();
-              const visible = rect.bottom > 0 && rect.top < innerHeight;
-              if (!visible) return;
-              idx = (idx + 1) % imgs.length;
-              imgs.forEach((img,i) => img.classList.toggle('active', i === idx));
-            }, 2600);
-          }
-        }
-      });
-    }, { threshold: 0.18 });
-
-    panels.forEach(panel => mobileObserver.observe(panel));
+    rooms.forEach(room=>observer.observe(room));
+  }else{
+    rooms.forEach(startSlideshow);
   }
 
-  function disableMobile() {
-    if (mobileObserver) {
-      mobileObserver.disconnect();
-      mobileObserver = null;
-    }
-    panels.forEach(panel => panel.classList.remove('mobile-in'));
-  }
-
-  function updateMode() {
-    if (window.matchMedia('(max-width:980px)').matches) {
-      enableMobile();
-    } else {
-      disableMobile();
-      desktopUpdate();
-    }
-  }
-
-  let raf = 0;
-  function schedule() {
-    if (raf) return;
-    raf = requestAnimationFrame(() => {
-      if (!window.matchMedia('(max-width:980px)').matches) desktopUpdate();
-      raf = 0;
-    });
-  }
-
-  window.addEventListener('scroll', schedule, { passive:true });
-  window.addEventListener('resize', () => {
-    updateMode();
-    schedule();
-  }, { passive:true });
-
-  setDesktopPanel(0,0);
-  updateMode();
+  updateProgress(0);
 })();
 

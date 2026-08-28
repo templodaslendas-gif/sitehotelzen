@@ -44,3 +44,9 @@ Alterações:
 - Desktop: troca de categoria e fotos responde ao scroll do mouse.
 - Mobile/tablet: cards entram com animação por IntersectionObserver e fotos alternam enquanto visíveis.
 - Café da manhã com contraste, tipografia e tamanhos revisados para melhor leitura.
+
+- V12: arquitetura da seção de quartos refeita para eliminar definitivamente o bug de quartos invisíveis.
+- Todos os 6 quartos agora existem no fluxo normal da página e nunca ficam escondidos por JavaScript.
+- Desktop: coluna de texto fica sticky; quartos rolam naturalmente à direita e o ativo ganha destaque.
+- Mobile/tablet: todos os quartos ficam empilhados e visíveis, sem sticky e sem travamento.
+- Indicador 01/06 acompanha o quarto que ocupa maior área da tela.
