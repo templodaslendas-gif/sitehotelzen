@@ -50,3 +50,10 @@ Alterações:
 - Desktop: coluna de texto fica sticky; quartos rolam naturalmente à direita e o ativo ganha destaque.
 - Mobile/tablet: todos os quartos ficam empilhados e visíveis, sem sticky e sem travamento.
 - Indicador 01/06 acompanha o quarto que ocupa maior área da tela.
+
+- V13: fotos principais substituídas por cópias HD de alta qualidade (2160 px de largura quando a origem era menor).
+- Compressão JPEG de alta qualidade, subsampling desativado e sharpening conservador.
+- Overlay escuro reduzido para preservar detalhes visuais.
+- Cada quarto agora é clicável e abre galeria fullscreen.
+- Galeria possui miniaturas, setas, teclado, contador e swipe no celular.
+- As imagens originais continuam preservadas no pacote.

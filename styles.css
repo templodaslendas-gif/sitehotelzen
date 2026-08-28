@@ -791,3 +791,211 @@ footer>p{width:100%;font-size:10px;color:#747169}
   .rooms-v12-list .story-copy h3{font-size:35px !important}
   .rooms-v12-list .story-copy p{font-size:12px !important}
 }
+
+/* =========================================================
+   V13 — Fotos HD + galeria por quarto
+   ========================================================= */
+
+/* As fotos do quarto ativo ficam limpas, nítidas e sem filtro de "cinema escuro". */
+.rooms-v12-list .v12-room{
+  filter:none !important;
+  opacity:.72 !important;
+  background:#0c0c0a !important;
+}
+.rooms-v12-list .v12-room.is-current{
+  opacity:1 !important;
+  filter:none !important;
+}
+.rooms-v12-list .story-media img{
+  image-rendering:auto !important;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  will-change:transform,opacity;
+  filter:none !important;
+}
+.rooms-v12-list .v12-room:after{
+  background:
+    linear-gradient(0deg,rgba(5,5,4,.91) 0%,rgba(5,5,4,.38) 32%,rgba(5,5,4,.04) 67%,transparent 100%) !important;
+}
+.rooms-v12-list .v12-room:not(.is-current):after{
+  background:
+    linear-gradient(0deg,rgba(5,5,4,.88),rgba(5,5,4,.14) 62%,transparent 100%) !important;
+}
+.story-actions{
+  align-items:center !important;
+  gap:16px !important;
+  flex-wrap:wrap !important;
+}
+.open-gallery{
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(8,8,7,.42);
+  backdrop-filter:blur(8px);
+  color:#fff;
+  border-radius:999px;
+  padding:10px 14px;
+  font-size:11px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.22s ease;
+}
+.open-gallery:hover{
+  background:rgba(255,255,255,.11);
+  border-color:rgba(225,194,124,.42);
+  transform:translateY(-1px);
+}
+
+/* Galeria fullscreen */
+.photo-lightbox{
+  position:fixed;
+  inset:0;
+  z-index:140;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+}
+.photo-lightbox.show{display:flex}
+.photo-lightbox-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(3,3,2,.92);
+  backdrop-filter:blur(12px);
+}
+.photo-lightbox-shell{
+  position:relative;
+  z-index:2;
+  width:min(1180px,96vw);
+  height:min(92svh,900px);
+  background:#0c0c0a;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:24px;
+  box-shadow:0 45px 120px rgba(0,0,0,.58);
+  overflow:hidden;
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+}
+.photo-lightbox-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:20px;
+  padding:18px 24px 14px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.photo-lightbox-head span{
+  color:var(--gold2);
+  font-size:9px;
+  letter-spacing:.2em;
+}
+.photo-lightbox-head h2{
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:28px;
+  margin:4px 0 0;
+}
+.photo-lightbox-head strong{
+  color:#b9b3a9;
+  font-size:12px;
+}
+.photo-lightbox-close{
+  position:absolute;
+  right:14px;
+  top:12px;
+  z-index:5;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.07);
+  color:#fff;
+  font-size:24px;
+  cursor:pointer;
+}
+.photo-lightbox-stage{
+  position:relative;
+  min-height:0;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:#050504;
+}
+.photo-lightbox-stage img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  image-rendering:auto;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+.gallery-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:3;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(9,9,8,.68);
+  backdrop-filter:blur(8px);
+  color:#fff;
+  font-size:34px;
+  line-height:1;
+  cursor:pointer;
+}
+.gallery-arrow.prev{left:18px}
+.gallery-arrow.next{right:18px}
+.gallery-thumbs{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding:12px 18px 16px;
+  background:#0c0c0a;
+}
+.gallery-thumb{
+  flex:0 0 92px;
+  width:92px;
+  height:66px;
+  border-radius:9px;
+  border:2px solid transparent;
+  padding:0;
+  overflow:hidden;
+  background:#151512;
+  cursor:pointer;
+  opacity:.58;
+}
+.gallery-thumb.active{
+  border-color:var(--gold2);
+  opacity:1;
+}
+.gallery-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+@media(max-width:760px){
+  .photo-lightbox{padding:0}
+  .photo-lightbox-shell{
+    width:100vw;
+    height:100svh;
+    border-radius:0;
+    border:0;
+  }
+  .photo-lightbox-head{
+    padding:16px 54px 12px 16px;
+  }
+  .photo-lightbox-head h2{font-size:22px}
+  .gallery-arrow{
+    width:42px;height:42px;font-size:30px;
+  }
+  .gallery-arrow.prev{left:10px}
+  .gallery-arrow.next{right:10px}
+  .gallery-thumb{flex-basis:78px;width:78px;height:58px}
+  .story-actions{
+    justify-content:flex-start !important;
+  }
+  .open-gallery{
+    width:100%;
+    text-align:center;
+  }
+}

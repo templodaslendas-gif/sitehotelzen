@@ -167,3 +167,100 @@ document.getElementById('year').textContent=new Date().getFullYear();
   updateProgress(0);
 })();
 
+
+/* V13 — galeria HD por quarto */
+(() => {
+  const galleries = {
+    "standard-triplo": ["assets/standard-triplo-1-hd.jpg", "assets/standard-triplo-2-hd.jpg"],
+    "standard-individual": ["assets/standard-individual-1-hd.jpg", "assets/standard-individual-2-hd.jpg", "assets/standard-individual-3-hd.jpg"],
+    "luxo-duplo": ["assets/luxo-duplo-1-hd.jpg", "assets/luxo-duplo-2-hd.jpg", "assets/luxo-duplo-3-hd.jpg"],
+    "standard-duplo": ["assets/standard-duplo-hd.jpg"],
+    "luxo-individual": ["assets/luxo-individual-hd.jpg"],
+    "standard-ar": ["assets/standard-ar-1-hd.jpg", "assets/standard-ar-2-hd.jpg", "assets/standard-ar-3-hd.jpg"]
+  };
+  const lightbox = document.getElementById('photoLightbox');
+  const main = document.getElementById('galleryMainImage');
+  const thumbs = document.getElementById('galleryThumbs');
+  const title = document.getElementById('galleryRoomTitle');
+  const counter = document.getElementById('galleryCounter');
+  const prev = document.getElementById('galleryPrev');
+  const next = document.getElementById('galleryNext');
+
+  if(!lightbox || !main || !thumbs) return;
+
+  let currentKey = '';
+  let currentIndex = 0;
+  let touchStartX = null;
+
+  function items() {
+    return galleries[currentKey] || [];
+  }
+
+  function render() {
+    const list = items();
+    if(!list.length) return;
+    currentIndex = (currentIndex + list.length) % list.length;
+    main.src = list[currentIndex];
+    main.alt = `${title.textContent} — foto ${currentIndex + 1}`;
+    counter.textContent = `${currentIndex + 1} / ${list.length}`;
+    [...thumbs.querySelectorAll('.gallery-thumb')].forEach((btn,i)=>btn.classList.toggle('active',i===currentIndex));
+  }
+
+  function openGallery(room) {
+    currentKey = room.dataset.gallery || '';
+    const list = items();
+    if(!list.length) return;
+    currentIndex = 0;
+    title.textContent = room.dataset.roomName || 'Quarto';
+    thumbs.innerHTML = list.map((src,i)=>`
+      <button class="gallery-thumb ${i===0?'active':''}" type="button" data-gallery-index="${i}" aria-label="Abrir foto ${i+1}">
+        <img src="${src}" alt="">
+      </button>`).join('');
+    thumbs.querySelectorAll('[data-gallery-index]').forEach(btn=>{
+      btn.addEventListener('click',()=>{currentIndex=Number(btn.dataset.galleryIndex);render();});
+    });
+    lightbox.classList.add('show');
+    lightbox.setAttribute('aria-hidden','false');
+    document.documentElement.style.overflow='hidden';
+    render();
+  }
+
+  function closeGallery() {
+    lightbox.classList.remove('show');
+    lightbox.setAttribute('aria-hidden','true');
+    document.documentElement.style.overflow='';
+  }
+
+  document.querySelectorAll('.v12-room').forEach(room=>{
+    room.querySelector('.open-gallery')?.addEventListener('click',e=>{
+      e.stopPropagation();
+      openGallery(room);
+    });
+    room.querySelector('.story-media')?.addEventListener('click',()=>openGallery(room));
+    room.querySelector('.story-media')?.style.setProperty('cursor','zoom-in');
+  });
+
+  document.querySelectorAll('[data-close-gallery]').forEach(el=>el.addEventListener('click',closeGallery));
+  prev?.addEventListener('click',()=>{currentIndex--;render();});
+  next?.addEventListener('click',()=>{currentIndex++;render();});
+
+  document.addEventListener('keydown',e=>{
+    if(!lightbox.classList.contains('show')) return;
+    if(e.key==='Escape') closeGallery();
+    if(e.key==='ArrowLeft'){currentIndex--;render();}
+    if(e.key==='ArrowRight'){currentIndex++;render();}
+  });
+
+  const stage=document.getElementById('galleryStage');
+  stage?.addEventListener('touchstart',e=>{touchStartX=e.touches[0]?.clientX ?? null;},{passive:true});
+  stage?.addEventListener('touchend',e=>{
+    if(touchStartX===null) return;
+    const end=e.changedTouches[0]?.clientX ?? touchStartX;
+    const delta=end-touchStartX;
+    if(Math.abs(delta)>45){
+      currentIndex += delta<0 ? 1 : -1;
+      render();
+    }
+    touchStartX=null;
+  },{passive:true});
+})();
