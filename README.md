@@ -62,3 +62,9 @@ Alterações:
 - Stage da galeria usa max-width/max-height e object-fit contain de forma forçada.
 - Standard Duplo e Luxo Individual foram reprocessados com nitidez/contraste conservadores.
 - Esses dois ainda dependem das fotos originais do hotel para obter o mesmo nível real de detalhe das demais categorias.
+
+- V15: Standard Duplo atualizado com 3 fotos novas em alta resolução.
+- V15: Luxo Individual atualizado com 3 fotos novas em alta resolução.
+- As 6 novas imagens foram preparadas em 2160 px para telas grandes/retina.
+- Galerias dos dois quartos agora exibem 3 fotos cada.
+- Rodapé inclui "Produzido por FFR do Brasil" com link para o WhatsApp da FFR.

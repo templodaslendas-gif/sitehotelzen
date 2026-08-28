@@ -174,8 +174,8 @@ document.getElementById('year').textContent=new Date().getFullYear();
     "standard-triplo": ["assets/standard-triplo-1-hd.jpg", "assets/standard-triplo-2-hd.jpg"],
     "standard-individual": ["assets/standard-individual-1-hd.jpg", "assets/standard-individual-2-hd.jpg", "assets/standard-individual-3-hd.jpg"],
     "luxo-duplo": ["assets/luxo-duplo-1-hd.jpg", "assets/luxo-duplo-2-hd.jpg", "assets/luxo-duplo-3-hd.jpg"],
-    "standard-duplo": ["assets/standard-duplo-hd.jpg"],
-    "luxo-individual": ["assets/luxo-individual-hd.jpg"],
+    "standard-duplo": ["assets/standard-duplo-1-hd.jpg", "assets/standard-duplo-2-hd.jpg", "assets/standard-duplo-3-hd.jpg"],
+    "luxo-individual": ["assets/luxo-individual-1-hd.jpg", "assets/luxo-individual-2-hd.jpg", "assets/luxo-individual-3-hd.jpg"],
     "standard-ar": ["assets/standard-ar-1-hd.jpg", "assets/standard-ar-2-hd.jpg", "assets/standard-ar-3-hd.jpg"]
   };
   const lightbox = document.getElementById('photoLightbox');

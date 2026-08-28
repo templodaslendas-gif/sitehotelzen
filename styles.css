@@ -1060,3 +1060,26 @@ footer>p{width:100%;font-size:10px;color:#747169}
   object-fit:cover !important;
   image-rendering:auto !important;
 }
+
+.ffr-site-credit{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  padding-top:18px;
+  margin-top:8px;
+  border-top:1px solid rgba(255,255,255,.07);
+  font-size:10px;
+  color:#777168;
+}
+.ffr-site-credit a{
+  color:#d7b875;
+  font-weight:700;
+  text-decoration:none;
+  transition:color .2s ease,transform .2s ease;
+}
+.ffr-site-credit a:hover{
+  color:#f1d89d;
+  transform:translateY(-1px);
+}
