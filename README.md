@@ -29,3 +29,11 @@ Alterações:
 - Seção de quartos transformada em narrativa interativa por scroll com troca progressiva de imagens.
 - Mobile/tablet usam fluxo vertical sem travar o scroll nativo.
 - Standard Duplo, Luxo Individual e Standard com ar-condicionado preparados para receber os arquivos restantes.
+
+- V9: seção de acomodações refeita com narrativa sticky e troca de quartos controlada pelo scroll.
+- Scroll desktop: cada trecho da rolagem revela uma categoria e alterna suas fotos.
+- Mobile/tablet: fallback vertical sem travar o scroll.
+- Todos os preços visíveis removidos do site.
+- CTA da seção alterado para reserva via WhatsApp.
+- Standard com ar-condicionado atualizado com as três fotos enviadas.
+- Ícone de Wi-Fi substituído por símbolo padrão em três ondas azuis.

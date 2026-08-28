@@ -284,3 +284,145 @@ footer>p{width:100%;font-size:10px;color:#747169}
 @media(max-width:560px){
  .rooms-scroll{padding:62px 16px}.rooms-sticky-head h2{font-size:46px}.story-panel{min-height:72svh;border-radius:20px}.story-copy{padding:23px}.story-copy h3{font-size:36px}.story-actions{align-items:flex-start;flex-direction:column}.pending-rooms{grid-template-columns:1fr;margin-top:36px}.breakfast-showcase{padding-top:54px;padding-bottom:54px}.breakfast-media img{height:360px}.hero-media video{object-position:center center}
 }
+
+/* V9 — Acomodações com scroll cinematográfico */
+.rooms-cinematic{
+  position:relative;
+  min-height:620vh;
+  padding:0;
+  background:
+    radial-gradient(circle at 68% 18%,rgba(183,138,60,.09),transparent 28%),
+    linear-gradient(180deg,#0b0b09,#12110d 52%,#0b0b09);
+  overflow:visible;
+}
+.rooms-interactive-wrap{height:620vh;position:relative}
+.rooms-sticky-stage{
+  position:sticky;
+  top:0;
+  min-height:100svh;
+  display:grid;
+  grid-template-columns:minmax(300px,38%) minmax(0,62%);
+  gap:48px;
+  align-items:center;
+  padding:92px max(26px,calc((100vw - var(--max))/2)) 46px;
+  overflow:hidden;
+}
+.rooms-narrative{position:relative;z-index:6;align-self:center;max-width:500px}
+.rooms-narrative h2{
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:clamp(48px,5.2vw,76px);
+  line-height:.96;letter-spacing:-.045em;
+  margin:11px 0 18px
+}
+.rooms-narrative h2 em{font-weight:500;color:#d8bd84}
+.rooms-narrative>p{color:#b5ada2;font-size:13px;line-height:1.75;max-width:430px}
+.rooms-whatsapp-cta{
+  display:inline-flex;align-items:center;justify-content:center;
+  margin-top:18px;padding:13px 18px;border-radius:999px;
+  background:linear-gradient(135deg,#c49546,#a8752f);
+  color:#17130c;font-size:11px;font-weight:700;
+  box-shadow:0 12px 30px rgba(174,128,50,.18);
+  transition:.25s
+}
+.rooms-whatsapp-cta:hover{transform:translateY(-2px);box-shadow:0 17px 38px rgba(174,128,50,.26)}
+.room-progress{margin-top:34px;max-width:360px}
+.room-progress-label{display:flex;align-items:baseline;gap:6px;font-size:11px;color:#827d74}
+.room-progress-label b{font-family:"Playfair Display",Georgia,serif;color:#f2eadf;font-size:24px}
+.room-progress-track{height:2px;background:rgba(255,255,255,.1);margin:9px 0 10px;overflow:hidden}
+.room-progress-track i{display:block;height:100%;width:16.666%;background:linear-gradient(90deg,#b78a3c,#e1c27c);transition:width .65s cubic-bezier(.2,.8,.2,1)}
+.room-progress strong{font-family:"Playfair Display",Georgia,serif;font-size:15px;color:#e9dfd0}
+.wheel-cue{display:flex;align-items:center;gap:9px;margin-top:22px;color:#777168}
+.wheel-cue small{font-size:9px;letter-spacing:.12em;text-transform:uppercase}
+.wheel-mouse{width:22px;height:34px;border:1px solid rgba(255,255,255,.24);border-radius:15px;position:relative}
+.wheel-mouse i{position:absolute;width:3px;height:6px;background:#d9bb78;border-radius:3px;left:50%;top:7px;transform:translateX(-50%);animation:roomWheel 1.55s ease-in-out infinite}
+@keyframes roomWheel{0%{opacity:0;transform:translate(-50%,0)}25%{opacity:1}100%{opacity:0;transform:translate(-50%,12px)}}
+
+.room-stage{position:relative;height:min(76svh,760px);perspective:1500px;z-index:3}
+.room-stage .story-panel{
+  position:absolute;inset:0;
+  min-height:0;height:100%;
+  display:flex;justify-content:flex-end;
+  border-radius:30px;
+  overflow:hidden;
+  opacity:0;
+  transform:translate3d(12%,18%,0) scale(.88) rotateY(-6deg);
+  filter:blur(8px) brightness(.74);
+  pointer-events:none;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 40px 110px rgba(0,0,0,.34);
+  transition:
+    opacity .65s ease,
+    transform .85s cubic-bezier(.16,.78,.21,1),
+    filter .65s ease;
+  will-change:transform,opacity,filter;
+}
+.room-stage .story-panel.is-active{
+  opacity:1;
+  transform:translate3d(0,0,0) scale(1) rotateY(0);
+  filter:none;
+  pointer-events:auto;
+  z-index:4
+}
+.room-stage .story-panel.is-before{
+  opacity:0;
+  transform:translate3d(-10%,-12%,0) scale(.92) rotateY(5deg);
+  filter:blur(6px) brightness(.75)
+}
+.room-stage .story-media{position:absolute;inset:0}
+.room-stage .story-media img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transform:scale(1.08);
+  transition:opacity .75s ease,transform 1.2s cubic-bezier(.2,.7,.2,1)
+}
+.room-stage .story-media img.active{opacity:1;transform:scale(1.015)}
+.room-stage .story-panel:after{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(0deg,rgba(5,5,4,.97) 0%,rgba(5,5,4,.46) 42%,rgba(5,5,4,.05) 76%),
+    linear-gradient(90deg,rgba(5,5,4,.18),transparent 65%)
+}
+.room-stage .story-copy{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:36px;max-width:680px}
+.room-stage .story-copy>span{color:var(--gold2);font-size:9px;letter-spacing:.22em}
+.room-stage .story-copy h3{font-family:"Playfair Display",Georgia,serif;font-size:clamp(39px,4.2vw,62px);margin:7px 0 10px;line-height:.96}
+.room-stage .story-copy p{color:#d0c9bd;font-size:13px;line-height:1.7;max-width:560px;margin:0}
+.room-stage .story-actions{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:flex-end}
+.room-stage .story-actions a{color:#efd49b;font-size:11px;font-weight:700}
+.room-stage:before{
+  content:"";position:absolute;inset:-14px;border:1px solid rgba(225,194,124,.08);
+  border-radius:36px;transform:translateZ(-40px);pointer-events:none
+}
+.wifi-icon svg{width:27px;height:22px;overflow:visible}
+.wifi-icon svg path{fill:none;stroke:#47a7ff;stroke-width:3;stroke-linecap:round}
+.wifi-icon{background:rgba(71,167,255,.06)!important;border-color:rgba(71,167,255,.28)!important}
+
+@media(max-width:980px){
+  .rooms-cinematic,.rooms-interactive-wrap{min-height:auto;height:auto}
+  .rooms-sticky-stage{position:relative;top:auto;display:block;min-height:0;padding:76px 18px}
+  .rooms-narrative{max-width:680px;margin-bottom:28px}
+  .room-progress,.wheel-cue{display:none}
+  .room-stage{height:auto;display:flex;flex-direction:column;gap:18px}
+  .room-stage .story-panel,
+  .room-stage .story-panel.is-active,
+  .room-stage .story-panel.is-before{
+    position:relative;inset:auto;height:72svh;min-height:520px;
+    opacity:1;transform:none;filter:none;pointer-events:auto
+  }
+  .room-stage .story-copy{padding:26px}
+}
+@media(max-width:560px){
+  .rooms-sticky-stage{padding:62px 16px}
+  .rooms-narrative h2{font-size:45px}
+  .rooms-narrative>p{font-size:12px}
+  .rooms-whatsapp-cta{width:100%;text-align:center}
+  .room-stage .story-panel,
+  .room-stage .story-panel.is-active,
+  .room-stage .story-panel.is-before{
+    height:68svh;min-height:500px;border-radius:21px
+  }
+  .room-stage .story-copy{padding:21px}
+  .room-stage .story-copy h3{font-size:35px}
+}
+@media(prefers-reduced-motion:reduce){
+  .room-stage .story-panel,.room-stage .story-media img,.room-progress-track i{transition:none!important}
+  .wheel-mouse i{animation:none!important}
+}
